@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+*  {
+    font-family: Roboto, "Open Sans", Verdana, sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    color: black;
+}
+
+html {
+    font-size: 16px;
+}
+.app-container {
+    width: 50rem;
+    margin: 0 auto;
+}
+.header {
+    padding: 1rem;
+    background: #cccccc;
+}
+.products {
+    display: flex;
+    flex-wrap: wrap;
+}
+.product-card {
+    display: flex;
+    width: 33%;
+    padding: 1.4rem;
+    flex-grow: 1;
+    position: relative;
+    border-bottom: 0.1rem solid;
+    background: #cccccc;
+    margin: 1rem;
+    border-radius: 1rem;
+}
+.product-card:hover {
+    background: rgba(204, 204, 204, 0.43);
+}
+.product-image {
+    flex: 2;
+}
+.product-image img {
+    max-width: 100%;
+}
+.product-info {
+    flex: 5;
+    margin: 0;
+    vertical-align: middle;
+    padding: 0.5rem;
+}
+
+.product-info-stock, .product-info-id {
+    font-size: 0.6rem;
+}
+.align-right{
+    text-align: right;;
+}
