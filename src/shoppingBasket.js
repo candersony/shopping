@@ -15,6 +15,13 @@ class ShoppingBasket {
         return this.basketItems.reduce((count, basketItem) => count + basketItem.quantity, 0);
     }
 
+    getTotalPrice() {
+        return this.basketItems.reduce(
+            (total, basketItem) =>
+            total + basketItem.product.price * basketItem.quantity
+            , 0);
+    }
+
     addItem(product) {
         if (product.stock <= 0) return;
 
