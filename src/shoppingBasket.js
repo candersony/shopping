@@ -1,6 +1,7 @@
 class ShoppingBasket {
-    constructor() {
+    constructor(onBasketCheckedOut) {
         this.basketItems = [];
+        this.onBasketCheckedOut = onBasketCheckedOut;
     }
 
     getBasketItem(productId) {
@@ -40,6 +41,10 @@ class ShoppingBasket {
 
     clear() {
         this.basketItems = [];
+    }
+
+    checkout() {
+        this.onBasketCheckedOut(this.basketItems)
     }
 }
 

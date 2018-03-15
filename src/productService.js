@@ -11,6 +11,12 @@ function getProducts() {
     return products.map(product => Object.assign({}, product));
 }
 
+function updateStock(product, quantitySold) {
+    const existingProduct = products.find(p => p.id === product.id);
+    existingProduct.stock = Math.max(existingProduct.stock - quantitySold, 0);
+}
+
 export default {
-    getProducts
+    getProducts,
+    updateStock
 };

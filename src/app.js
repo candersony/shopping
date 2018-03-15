@@ -14,23 +14,35 @@ class App extends Component {
         }
     }
 
+    updateState(newState) {
+        this.setState(Object.assign({
+            shoppingBasketItemsCount: this.shoppingBasket.getItemCount()
+        }, newState));
+    }
+
     changeView(viewName) {
-        this.setState(currentState => Object.assign({}, currentState, {
+        this.updateState({
             currentView: viewName
-        }));
+        });
     }
 
     onClickProduct(product) {
         this.shoppingBasket.addItem(product);
-        this.setState({
-            shoppingBasketItemsCount: this.shoppingBasket.getItemCount()
-        });
+        this.updateState();
     }
 
     onCheckout() {
         const shoppingBasket = this.props.shoppingBasket;
 
+        shoppingBasket.checkout();
         this.changeView('invoice');
+    }
+
+    onFinish() {
+        const shoppingBasket = this.props.shoppingBasket;
+
+        shoppingBasket.clear();
+        this.changeView('products');
     }
 
     renderProductView() {
@@ -54,7 +66,7 @@ class App extends Component {
                 <a href="#" onClick={() => this.changeView('products')}>back</a>
                 <ShoppingBasketView
                     shoppingBasket={this.shoppingBasket}
-                    onClickCheckout={() => this.changeView('invoice')}>
+                    onClickCheckout={() => this.onCheckout()}>
                 </ShoppingBasketView>
             </div>
         );
@@ -63,7 +75,7 @@ class App extends Component {
     renderInvoiceView() {
         return (
             <div className="app-container">
-                <InvoiceView shoppingBasket={this.shoppingBasket} onClickFinish={() => {}}></InvoiceView>
+                <InvoiceView shoppingBasket={this.shoppingBasket} onClickFinish={() => this.onFinish()}></InvoiceView>
             </div>
         );
     }

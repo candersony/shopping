@@ -4,9 +4,20 @@ import App from './src/app';
 import productService from './src/productService';
 import ShoppingBasket from './src/shoppingBasket';
 
-const shoppingBasket = new ShoppingBasket();
+const onBasketCheckedOut = basketItems => {
+    basketItems.forEach(
+            basketItem => productService.updateStock(basketItem.product, basketItem.quantity)
+    );
+    renderApp();
+};
 
-ReactDOM.render(
-    <App products={productService.getProducts()} shoppingBasket={shoppingBasket}/>,
-    document.getElementById('root')
-);
+const shoppingBasket = new ShoppingBasket(onBasketCheckedOut);
+
+function renderApp() {
+    ReactDOM.render(
+        <App products={productService.getProducts()} shoppingBasket={shoppingBasket}/>,
+        document.getElementById('root')
+    );
+}
+
+renderApp();
