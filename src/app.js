@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ProductList from './productListView';
 import ShoppingBasketHeaderView from './shoppingBasketHeaderView';
 import ShoppingBasketView from './shoppingBasketView';
+import InvoiceView from './invoiceView';
 
 class App extends Component {
     constructor(props) {
@@ -26,6 +27,12 @@ class App extends Component {
         });
     }
 
+    onCheckout() {
+        const shoppingBasket = this.props.shoppingBasket;
+
+        this.changeView('invoice');
+    }
+
     renderProductView() {
         return (
             <div className="app-container">
@@ -41,14 +48,22 @@ class App extends Component {
         );
     }
 
-    renderShoppingBasketView()  {
+    renderShoppingBasketView() {
         return (
             <div className="app-container">
                 <a href="#" onClick={() => this.changeView('products')}>back</a>
                 <ShoppingBasketView
                     shoppingBasket={this.shoppingBasket}
-                    onClickCheckout={() => {}}>
+                    onClickCheckout={() => this.changeView('invoice')}>
                 </ShoppingBasketView>
+            </div>
+        );
+    }
+
+    renderInvoiceView() {
+        return (
+            <div className="app-container">
+                <InvoiceView shoppingBasket={this.shoppingBasket} onClickFinish={() => {}}></InvoiceView>
             </div>
         );
     }
@@ -57,6 +72,7 @@ class App extends Component {
         const views = {
             'products': this.renderProductView.bind(this),
             'shoppingBasket': this.renderShoppingBasketView.bind(this),
+            'invoice': this.renderInvoiceView.bind(this)
         };
 
         return views[this.state.currentView]();
