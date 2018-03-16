@@ -9,7 +9,7 @@ const ShoppingBasketView = ({shoppingBasket, onClickCheckout}) => {
             <ShoppingBasketTableView basketItems={shoppingBasket.basketItems}></ShoppingBasketTableView>
             <div className="align-right">
                 <div>Total: {shoppingBasket.getTotalPrice()}</div>
-                <button onClick={onClickCheckout}>Checkout</button>
+                <button className="mobile-big-button" onClick={onClickCheckout}>Checkout</button>
             </div>
         </div>
     )

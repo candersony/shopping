@@ -8,7 +8,7 @@ const InvoiceView = ({shoppingBasket, onClickFinish}) => {
             <h1>Invoice</h1>
             <ShoppingBasketTableView basketItems={shoppingBasket.basketItems}></ShoppingBasketTableView>
             <div className="align-right">
-                <button onClick={onClickFinish}>Finish</button>
+                <button className="mobile-big-button" onClick={onClickFinish}>Finish</button>
             </div>
         </div>
     )

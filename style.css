@@ -51,7 +51,7 @@ html {
 }
 
 .product-info-stock, .product-info-id {
-    font-size: 0.6rem;
+    font-size: 0.6em;
 }
 
 @-webkit-keyframes fadeIn {
@@ -121,4 +121,22 @@ table td {
 table thead th {
     border-bottom: 1px solid #bbc5ca;
     color: #243137;
+}
+
+@media (max-device-width: 720px) {
+    body {
+        font-size: 5rem;
+    }
+    button {
+        font-size: 2rem;
+    }
+    button.mobile-big-button {
+        font-size: 10rem;
+    }
+    .app-container {
+        width: 100%;
+    }
+   .product-card {
+        width: 100%;
+    }
 }
